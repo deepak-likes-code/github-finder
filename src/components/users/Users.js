@@ -12,7 +12,7 @@ const Users = ({ users, loading }) => {
 
     } else {
         return (
-            <div style={userStyle}>
+            <div class="grid-3" >
 
                 {users.map(user => (
                     <UserItem key={user.id} user={user} />
@@ -20,13 +20,6 @@ const Users = ({ users, loading }) => {
             </div>
         )
     }
-}
-
-const userStyle = {
-    display: "grid",
-    gridTemplateColumns: "repeat(3,1fr)",
-    gap: '1rem',
-    padding: '1rem'
 }
 
 Users.propTypes = {
