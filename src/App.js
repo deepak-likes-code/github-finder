@@ -1,10 +1,9 @@
-import React, { Fragment } from 'react';
-
+import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Navbar from './components/layout/Navbar';
-import Users from "./components/users/Users";
+import Home from './components/pages/Home'
+import NotFound from './components/pages/NotFound'
 import User from "./components/users/User";
-import Search from "./components/users/Search";
 import Alert from './components/layout/Alert';
 import About from './components/pages/About'
 import GithubState from './context/github/GithubState'
@@ -18,7 +17,6 @@ const App = () => {
     <GithubState>
       <AlertState>
 
-
         <Router>
           <div>
             <Navbar title="GitHub Connect" icon="fab fa-github" />
@@ -26,33 +24,20 @@ const App = () => {
               <Alert />
 
               <Switch>
-                <Route exact path="/" render={props => (
-                  <Fragment>
-                    <Search
-
-                    />
-
-                    <Users />
-
-                  </Fragment>
-                )}
-                />
-
+                <Route exact path="/" component={Home} />
                 <Route expact path="/about" component={About} />
-
                 <Route exact path="/user/:login" component={User} />
-
+                <Route component={NotFound} />
               </Switch>
 
             </div>
           </div>
         </Router>
+
       </AlertState>
     </GithubState>
 
   );
-
 }
-
 
 export default App;
